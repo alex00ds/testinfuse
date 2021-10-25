@@ -27,7 +27,7 @@ class RequestTracker
         $fields = [];
 
         foreach ($data as $field => $value) {
-            $fields[] = "`$field` = '$value'";
+            $fields[] = "`$field` = :$field";
         }
 
         $sql = 'SELECT `views_count` FROM `' . static::$table . '` WHERE ' . implode(' AND ', $fields) . ' LIMIT 1 FOR UPDATE';
